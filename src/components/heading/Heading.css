@@ -1,0 +1,22 @@
+.heading {
+   align-self: center;
+    justify-self: center;
+   
+    animation-timeline: --header-timeline;
+    /* animation-range: entry 10% exit -25%; */
+    animation-name: headingFadeout;
+    animation-fill-mode: both;
+    animation-direction: reverse;
+
+}
+
+@keyframes headingFadeout {
+  from {
+    opacity: 1;
+      }
+  to {
+    opacity: 0;
+    transform: translateY(-100%); 
+
+  }
+}

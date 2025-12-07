@@ -1,0 +1,30 @@
+:root {
+
+  --text-color-primary: #333333;
+  --text-color-secondary: #555555;
+
+  --primary-color: #00FFFF;
+  --primary-color-dark: #5b6f6f;
+  --primary-color-darker: #374f4f;
+
+
+
+
+  --secondary-color: #D8A7A7;
+  --secondary-color-dark: #A07070;
+  --secondary-color-darker: #704B4B;
+
+  --tertiary-color: #6B8E23;
+  --tertiary-color-dark: #4E6B19;
+  --tertiary-color-darker: #364B11;
+
+  --header-font-family: system-ui, sans-serif;
+  --body-font-family: 'Open Sans', sans-serif;
+  --button-font-family: 'Roboto', sans-serif;
+
+  --primary-font-size: 16px;
+  --secondary-font-size: 14px;
+  --header-font-size: 32px;
+  --background-url: url('../public/8bitCity.png');
+
+}
