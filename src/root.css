@@ -27,4 +27,6 @@
   --header-font-size: 32px;
   --background-url: url('../public/8bitCity.png');
 
+  --timeline-default: --section-timeline;
+
 }

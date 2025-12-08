@@ -1,14 +1,13 @@
+import ImageCards from './../imageCards/imageCards.jsx'
 
-const Products = () => {
+
+
+const Products = ({ images }) => {
     return (
         <div className="screenSection  ">
             <div className="cardContainer cover-right">
-                <h2>Our Products</h2>
-                <ul>
-                    <li>Product 1</li>
-                    <li>Product 2</li>
-                    <li>Product 3</li>
-                </ul>
+                <ImageCards image={images} />
+               
             </div>
         </div>
     );

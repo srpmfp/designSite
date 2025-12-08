@@ -1,0 +1,63 @@
+
+.helperApi {
+    display: flex;
+    align-items: center;
+    background: red;
+    position:fixed;
+    z-index: 9999;
+    bottom: 0%;
+    right: 0%;
+    margin: 0 10em ;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    transform: translateY(50%);
+    box-shadow: 1px 5px  25px 5px rgba(0,0,0,.6)   ;
+  
+}
+
+.helperApi:hover {
+    background: orange;
+    cursor: pointer;
+    animation: hoverAnim 0.3s forwards;
+    transition:all 0.3s ease-in-out;
+
+    
+
+}
+
+.helperApi:not(:hover) {
+ 
+    animation: returnAnim 0.3s forwards;
+    
+    
+}   
+
+
+@keyframes bounce {
+    
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes hoverAnim {
+    50% {
+        animation-play-state: paused;
+        transform: translateY(inherit) scale(1);
+    }
+    100% {
+        transform: translateY(0%) scale(1.1);
+    }
+}
+@keyframes returnAnim {
+    0% {
+        transform: translateY(0%) scale(1.1);
+    }
+    100% {
+        transform: translateY(50%) scale(1);
+    }
+}
