@@ -1,15 +1,18 @@
+import { useEffect, useState } from 'react';
 import ImageCards from './../imageCards/imageCards.jsx'
 
 
 
-const Products = ({ images }) => {
+const Products = ({ productImage }) => {
+
     return (
         <div className="screenSection  ">
             <div className="cardContainer cover-right">
-                <ImageCards image={images} />
-               
+
+                <ImageCards productImage={productImage} />
             </div>
         </div>
+
     );
 }
 export default Products;

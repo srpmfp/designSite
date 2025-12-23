@@ -21,7 +21,7 @@
 
     position: relative;
     display: flex;
-    filter: blur(5px) grayscale(80%);
+    filter: blur(0px) grayscale(0%);
     flex-direction:column;
     align-items: center;
     justify-content: space-around;
@@ -38,11 +38,11 @@
         position: absolute;
         height: 100%;
         width: 100%;
+        border-radius: 20px;
         top: 0;
         left: 0;
         z-index: 999;
-       
-         animation: unblur 0.5s ease-in-out forwards ;
+        animation: unblur 0.5s ease-in-out forwards ;
        
     }
    
@@ -54,7 +54,7 @@
     
     opacity: 0;
     position: absolute;
-    top: 50%;
+    top: 10%;
     margin: 0 0% 5% 0;
     font-size: 1em;
     padding: 2ch;
@@ -65,11 +65,11 @@
     
 }
 .imageCard:hover {
-    filter: blur(0px) grayscale(0%);
-    cursor: pointer;
+    filter: blur(10px) grayscale(80%);
     .descriptions {
    opacity: 1;
      z-index: 1000;
+     filter: blur(0px);
     transition: all 0.5s ease-in-out;
     transition-delay: 0.3s;
 }
@@ -93,7 +93,7 @@
 .photographer {
 
     position: absolute;
-    margin: 0 0% 10% 0;
+    margin: 0 0% 1% 0;
     bottom:0;
     font-size: 0.8em;
     padding: 2ch;
@@ -104,14 +104,16 @@
     a {
         text-decoration: none;
         color: var(--text-color-primary);
-       
+        padding: 2.5ch;
+        
 }}
 
 .pexels-logo {
     display:flex;
-    justify-content:center;
+    justify-content:center; 
     align-items:center;
     position: absolute;
+    padding-left: 1ch;
     bottom: 0;
     left: 0;
     margin: 1em;
@@ -119,18 +121,28 @@
     height: auto;
     z-index: 1000;
     background: rgb(150, 136, 136);
-    padding: 2px;
-    border-radius: 1em;
+    padding: 0.2ch;
+    border-radius: 100vw;
     img {
         width: 50%;
         height: auto;
+        padding: 0.2ch;
+        margin:auto;
+        
+    }
+    a {
+        padding:.4ch;
     }
   
 }
  
  a[href^='http']::after {
          content: url("/public/externalSite.svg");
+         position:absolute;
+         object-fit: contain;
+         cursor: pointer;
+         right:5;
          margin:auto;
-         padding: 1ch;
+         padding-left: 1ch;
          z-index: 1000;
     }

@@ -1,5 +1,6 @@
 
 .helperApi {
+
     display: flex;
     align-items: center;
     background: red;
@@ -7,30 +8,49 @@
     z-index: 9999;
     bottom: 0%;
     right: 0%;
-    margin: 0 10em ;
+
     border-radius: 50%;
     width: 100px;
     height: 100px;
     transform: translateY(50%);
+    animation: loadAnim 0.5s forwards;
+    animation-delay: 1s;
     box-shadow: 1px 5px  25px 5px rgba(0,0,0,.6)   ;
   
 }
 
+.bubble {
+    position:fixed;
+    display:none;
+    z-index: 10000;
+    bottom: 0%;
+    right: 0%;
+    width:10vw;
+    height:5vw;   
+    background: yellow;
+}
+
+.active{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between
+
+}
+
 .helperApi:hover {
+
     background: orange;
     cursor: pointer;
     animation: hoverAnim 0.3s forwards;
     transition:all 0.3s ease-in-out;
 
-    
 
 }
 
 .helperApi:not(:hover) {
  
     animation: returnAnim 0.3s forwards;
-    
-    
+
 }   
 
 
@@ -60,4 +80,38 @@
     100% {
         transform: translateY(50%) scale(1);
     }
+}
+
+.close-x {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.close-x::before,
+.close-x::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 2px;
+    background: #333;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.close-x::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+.helperInput {
+    width: 80%;
+    height: 40%;
+    margin: 0 10%;
+    border-radius: 10px;
+    border: 2px solid #333;
+    padding: 5px;
+    font-size: 1em;
 }

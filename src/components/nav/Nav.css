@@ -1,8 +1,8 @@
 @import '../../root.css';
 .nav {
-    position: fixed;
+
     width: 100vw;
-    height: auto;
+    height: 10ch;
     z-index: 10;
   
 }
@@ -12,12 +12,12 @@
     flex-wrap:wrap;
     background: linear-gradient(var(--primary-color-dark), var(--primary-color-darker));
     width:100%;
-    height: 10vh;
+    height: 10ch;
     margin: auto;
     list-style: none;
     text-decoration: none;
     align-items: center;
-    justify-content: start;
+    justify-content: Center;
     &li {
         width: auto;
         flex-basis: 1;      
@@ -32,4 +32,10 @@
             color: var(--accent-color);
         }
     }
+
+[href= "/login"]{
+    position: fixed;
+    right: 0;
+    padding: 1em;
+}
 }

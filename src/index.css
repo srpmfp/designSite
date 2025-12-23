@@ -11,3 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@import "./components/heading/Heading.css";
+@import "./components/products/Products.css";
+@import "./components/team/Team.css";
+@import "./components/nav/Nav.css";
+@import "./root.css";
+@import "./components/login/Login.css";

@@ -1,0 +1,10 @@
+
+.Headshot {
+    width: auto;
+    height: 400px;
+    max-height: 500px;
+    border-radius: 100vw;
+    transition: all 0.3s ease-in-out;
+    margin: 2vw;
+}
+    

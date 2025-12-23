@@ -1,6 +1,4 @@
-@import "./components/heading/Heading.css";
-@import "./components/products/Products.css";
-@import "./components/testimonials/Testimonials.css";
+
 @import "./components/nav/Nav.css";
 @import "./root.css";
 
@@ -23,13 +21,14 @@ body {
   height: 100vh;
   overflow-y: auto;
 
+
 }
 
 .screenSection {
   position:relative;
-  margin: auto;
-  scroll-snap-stop: normal;
-  overflow: hidden;
+  background: hsl(from var(p) / 0.8);
+
+  overflow-y: scroll;
   display: grid;
   grid-template-areas:
     'left center right'
@@ -37,18 +36,17 @@ body {
     'leftBottom centerBottom rightBottom'
   ;
   grid-template-columns: 1fr 2fr 1fr;
-  border: transparent 10px solid;
+
   gap: 10px;
-  Height: 100vh;
+  Height: auto;
   Width: 100%;
   color: var(--text-color-primary);
   font-size: var(--primary-font-size);
-  position: relative; /* Add this for ::after positioning */
+  position: relative;
   
-  /* Add the view timeline here - the element being observed */
   view-timeline-name: var(--timeline-default);
   view-timeline-axis: block;
-   border: transparent 1px solid;
+
    
   &::after{
     content: "";
@@ -57,11 +55,9 @@ body {
     left: 0;
     width: 100%;
     height: 50%;
-   
     pointer-events: none;
     background: linear-gradient(
-      to bottom,
-      
+      to top,
       rgba(0, 0, 0, 0.0),
       rgba(219, 219, 219, 0.3),
       rgba(255, 255, 255, 0.03)
@@ -82,7 +78,7 @@ body {
   grid-row: 1/-4;
   gap: 1em;
   display: flex;
-  height:100vh;
+  height:90vh;
   padding: 4em;
   width: auto;
   min-width: 100vw;
@@ -92,14 +88,11 @@ body {
   
   border-radius: 1em;
   background: hsl(from var(--primary-color) / 0.2);
-  backdrop-filter: blur(20px) grayscale(50%);
   & .heading {
-     view-timeline-name: --header-timeline;
+     view-timeline-name: --timeline-default;
   }
 
 }
-
-
 
 
 .cardContainer::before {
@@ -109,15 +102,13 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-
   z-index: -1;
   border: transparent 1px solid;
   border-radius: inherit;
-  background: steelblue border-box;
   mask:
     linear-gradient(black) border-box,
     linear-gradient(black) padding-box;
-  mask-composite: subtract;
+
 }
 
 div[class^="cover"]::before {
@@ -129,7 +120,6 @@ div[class^="cover"]::before {
   height: 100%;
 
   z-index: -1;
-  border: transparent 1px solid;
   border-radius: inherit;
   background: var(--secondary-color) border-box;
   mask:
@@ -141,17 +131,16 @@ div[class^="cover"]::before {
 div[class$="left"] {
   grid-column: left/ center;
   position: relative;
-  transform: translateX(-5%);
-  animation: slideIn 3s linear alternate ;
+  transform: translateX(-1%);
+  animation: slideIn 1s linear alternate ;
   animation-timeline: var(--timeline-default); 
-  animation-range: entry -10% cover 50%; /* Control when animation triggers */
+  animation-range: entry 0% cover 50%; /* Control when animation triggers */
 }
 
 @keyframes slideIn {
   0% {
     opacity: 0;
      transform: translateX(0%);
-    
     
   }
   100%{
@@ -165,10 +154,48 @@ div[class$="left"] {
 div[class$="right"] {
   
   grid-column: center/ right;
-  transform: translateX(5%);
+  transform: translateX(1%);
    animation: slideIn 3s linear alternate ;
   animation-timeline: var(--timeline-default); 
-  animation-range: entry 0% cover 50%; /* Control when animation triggers */
+  animation-range: entry 0% cover 50%; 
 
-
+}
+.building-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    max-width: 50vw;
+    object-fit: cover;
+    object-position: center;
+    z-index: -1;
+    filter: brightness(0.7);
+    transition: all 0.5s ease-in-out;
+    animation: fadeOscillate 5s ease-in-out infinite;
+ 
+   
+    &::after {
+        content: "";
+        position: absolute;
+        background: black;
+        height: 100%;
+        width: 100%;
+        border-radius: 20px;
+        top: 0;
+        left: 0;
+        z-index: 999;
+         
+      }
+}
+@keyframes fadeOscillate {
+    0% {
+        opacity: 0.0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.0;
+    }
 }
