@@ -1,14 +1,10 @@
 @import "./components/nav/Nav.css";
 @import "./root.css";
 
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
+body {
+  overflow: hidden;
+}
 .App {
   display: block;
   font-family: var(--body-font-family);
@@ -17,49 +13,47 @@
   height: 100vh;
   overflow-y: auto;
 
+  view-timeline-name: var(--timeline-default);
+  view-timeline-axis: block;
+
 
 }
 
 .screenSection {
   position: relative;
   background: hsl(from var(p) / 0.8);
-
-  overflow-y: scroll;
+  overflow: none;
   display: grid;
   grid-template-areas:
     'left center right'
     'leftMid centerMid rightMid'
     'leftBottom centerBottom rightBottom'
-  ;
-  grid-template-columns: 1fr 2fr 1fr;
-
+  ;  grid-template-columns: 1fr .25fr 1fr;
   gap: 10px;
-  Height: auto;
+  Height: 100vh;
   Width: 100%;
   color: var(--text-color-primary);
   font-size: var(--primary-font-size);
-  position: relative;
-
-  view-timeline-name: var(--timeline-default);
-  view-timeline-axis: block;
 
 
-  &::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 50%;
-    pointer-events: none;
-    background: linear-gradient(to top,
-        rgba(0, 0, 0, 0.0),
-        rgba(219, 219, 219, 0.3),
-        rgba(255, 255, 255, 0.03));
-    z-index: 1;
-  }
+   
+ 
+    
 }
 
+.left {
+  grid-area: left;
+}
+.center {
+  grid-area:center;
+}
+.right{
+  grid-area: right;
+}
+
+.centerMid {
+  grid-area: centerMid;
+}
 .image {
   width: 10%;
   height: auto;
@@ -69,23 +63,18 @@
 
 .cardContainer {
   position: relative;
-  grid-row: 1/-4;
   gap: 1em;
   display: flex;
-  height: 90vh;
+  height:100%;
   padding: 4em;
   width: auto;
   min-width: 100vw;
   align-items: center;
   justify-content: center;
   z-index: 2;
-
   border-radius: 1em;
   background: hsl(from var(--primary-color) / 0.2);
-
-  & .heading {
-    view-timeline-name: --timeline-default;
-  }
+ 
 
 }
 
@@ -113,18 +102,17 @@ div[class^="cover"]::before {
   left: 0;
   width: 100%;
   height: 100%;
-
   z-index: -1;
   border-radius: inherit;
   background: var(--secondary-color) border-box;
   mask:
     linear-gradient(black) border-box,
     linear-gradient(black) padding-box;
-  mask-composite: subtract;
+
 }
 
 div[class$="left"] {
-  grid-column: left/ center;
+  grid-column: left;
   position: relative;
   transform: translateX(-1%);
   animation: slideIn 1s linear alternate;
@@ -148,45 +136,87 @@ div[class$="left"] {
 
 }
 
+
 div[class$="right"] {
-
-  grid-column: center/ right;
+  
+  grid-column:  right;
+  grid-row: rightMid;
   transform: translateX(1%);
-  animation: slideIn 3s linear alternate;
-  animation-timeline: var(--timeline-default);
-  animation-range: entry 0% cover 50%;
-
-}
-
-.building-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  max-width: 50vw;
-  object-fit: cover;
-  object-position: center;
-  z-index: -1;
-  filter: brightness(0.7);
-  transition: all 0.5s ease-in-out;
-  animation: fadeOscillate 5s ease-in-out infinite;
-
-
-  &::after {
-    content: "";
-    position: absolute;
-    background: black;
-    height: 100%;
-    width: 100%;
-    border-radius: 20px;
-    top: 0;
-    left: 0;
-    z-index: 999;
-
+   animation: slideIn 3s linear alternate;
+  margin:auto;
+  /* animation-timeline: var(--timeline-default); 
+  animation-range: entry 0% cover 50%;  */
+   animation: fadeOscillate 5s ease-in-out infinite;
+& h1{
+    text-align: center;
+    color: white;
+    
+   
   }
 }
 
+.building-video {
+    position: absolute;
+    top: 0%;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    max-width: 50vw;
+    object-fit: cover;
+    object-position: center;
+    z-index: -1;
+    filter: brightness(0.6);
+    transition: all  ease-in-out;
+    animation: fadeOscillate 5s ease-in-out infinite;
+ 
+  mask-clip: padding-box;
+    background-image: radial-gradient(circle at 200% 50%, white, transparent);
+    background-origin: padding-box;
+
+ 
+   
+    &::after {
+        content: "";
+      
+        background: black;
+        height: 100%;
+        width: 100%;
+        border-radius: 20px;
+        top: 0;
+        RIGHT: 50%;
+        z-index: 999;
+        
+      }
+}
+
+
+.building-video::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20%;
+    height: 100%;
+    background: linear-gradient(to right, 
+        var(--primary-color, #000) 0%, 
+        transparent 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.building-video::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20%;
+    height: 100%;
+    background: linear-gradient(to left, 
+        var(--primary-color, #000) 0%, 
+        transparent 100%);
+    z-index: 1;
+    pointer-events: none;
+}
 @keyframes fadeOscillate {
   0% {
     opacity: 0.0;
