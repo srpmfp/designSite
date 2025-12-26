@@ -13,6 +13,7 @@
     width:100%;
     animation: float 20s ease-in-out infinite;
     overflow-x: scroll;
+    z-index:1000;
     
     
 }

@@ -106,6 +106,7 @@ function App() {
 
     const interval = setInterval(() => {
 
+
       setVideoIndex((prevIndex) => (prevIndex + 1) % buildingVideos.length);
 
     }, 5000);
@@ -118,10 +119,19 @@ function App() {
     , [buildingVideos]);
 
   const currentVideo = buildingVideos.length > 0 ? buildingVideos[videoIndex] : null;
+  const textArray = [
+    "Innovative Designs",
+    "Creative Solutions",
+    "User-Centered Approach",
+    "Cutting-Edge Technology"
+  ];
 
-  return (<div className="App screenSection">
+  const currentText = buildingVideos.length > 0 ? [textArray[videoIndex]] : [];
 
-    {currentVideo && (
+  return (<div className="App">
+
+
+    {currentVideo && (<>
       <video
         key={currentVideo.id}
         className="building-video"
@@ -131,23 +141,27 @@ function App() {
       >
         <source src={currentVideo.video_files[0].link} type="video/mp4" />
         Your browser does not support the video tag.
-      </video>
+      </video>  <section className="screenSection ">
+
+
+
+        <div className='cardContainer-right'>
+          <h1>{currentText}</h1>
+        </div>
+      </section>  
+    </>
     )}
 
-    <section className="cardContainer cover-left">
-      <header className="App-header">
+
+    <section className="screenSection">
+      <div className='cardContainer-right'>
         <h1>Welcome to the Design Site</h1>
-      </header>
+      </div>
     </section>
-    <section className="cardContainer cover-right">
-      <header className="App-header">
+    <section className="screenSection ">
+      <div className='cardContainer-right' >
         <h1>Welcome to the Design Site</h1>
-      </header>
-    </section>
-    <section className="cardContainer left">
-      <header className="App-header">
-        <h1>Welcome to the Design Site</h1>
-      </header>
+      </div>
     </section>
   </div>
   );

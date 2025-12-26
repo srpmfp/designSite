@@ -39,7 +39,7 @@ const Team = ({ headshotImage }) => {
     return (
         <div className="screenSection">
 
-            <div className="cardContainer cover-left">
+            <div className="cardContainer">
                 {imageData.map((url, index) => (
                     <div key={index}  >
                         <Image
