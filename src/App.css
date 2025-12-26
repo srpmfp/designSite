@@ -1,4 +1,3 @@
-
 @import "./components/nav/Nav.css";
 @import "./root.css";
 
@@ -10,9 +9,6 @@
   box-sizing: border-box;
 }
 
-body {
-  overflow: hidden;
-}
 .App {
   display: block;
   font-family: var(--body-font-family);
@@ -25,7 +21,7 @@ body {
 }
 
 .screenSection {
-  position:relative;
+  position: relative;
   background: hsl(from var(p) / 0.8);
 
   overflow-y: scroll;
@@ -43,12 +39,12 @@ body {
   color: var(--text-color-primary);
   font-size: var(--primary-font-size);
   position: relative;
-  
+
   view-timeline-name: var(--timeline-default);
   view-timeline-axis: block;
 
-   
-  &::after{
+
+  &::after {
     content: "";
     position: absolute;
     top: 50%;
@@ -56,12 +52,10 @@ body {
     width: 100%;
     height: 50%;
     pointer-events: none;
-    background: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 0.0),
-      rgba(219, 219, 219, 0.3),
-      rgba(255, 255, 255, 0.03)
-    );
+    background: linear-gradient(to top,
+        rgba(0, 0, 0, 0.0),
+        rgba(219, 219, 219, 0.3),
+        rgba(255, 255, 255, 0.03));
     z-index: 1;
   }
 }
@@ -78,18 +72,19 @@ body {
   grid-row: 1/-4;
   gap: 1em;
   display: flex;
-  height:90vh;
+  height: 90vh;
   padding: 4em;
   width: auto;
   min-width: 100vw;
   align-items: center;
   justify-content: center;
   z-index: 2;
-  
+
   border-radius: 1em;
   background: hsl(from var(--primary-color) / 0.2);
+
   & .heading {
-     view-timeline-name: --timeline-default;
+    view-timeline-name: --timeline-default;
   }
 
 }
@@ -132,70 +127,76 @@ div[class$="left"] {
   grid-column: left/ center;
   position: relative;
   transform: translateX(-1%);
-  animation: slideIn 1s linear alternate ;
-  animation-timeline: var(--timeline-default); 
-  animation-range: entry 0% cover 50%; /* Control when animation triggers */
+  animation: slideIn 1s linear alternate;
+  animation-timeline: var(--timeline-default);
+  animation-range: entry 0% cover 50%;
+  /* Control when animation triggers */
 }
 
 @keyframes slideIn {
   0% {
     opacity: 0;
-     transform: translateX(0%);
-    
+    transform: translateX(0%);
+
   }
-  100%{
+
+  100% {
     opacity: 1;
 
   }
-  
+
 
 }
 
 div[class$="right"] {
-  
+
   grid-column: center/ right;
   transform: translateX(1%);
-   animation: slideIn 3s linear alternate ;
-  animation-timeline: var(--timeline-default); 
-  animation-range: entry 0% cover 50%; 
+  animation: slideIn 3s linear alternate;
+  animation-timeline: var(--timeline-default);
+  animation-range: entry 0% cover 50%;
 
 }
+
 .building-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  max-width: 50vw;
+  object-fit: cover;
+  object-position: center;
+  z-index: -1;
+  filter: brightness(0.7);
+  transition: all 0.5s ease-in-out;
+  animation: fadeOscillate 5s ease-in-out infinite;
+
+
+  &::after {
+    content: "";
     position: absolute;
-    top: 0;
-    left: 0;
+    background: black;
     height: 100%;
     width: 100%;
-    max-width: 50vw;
-    object-fit: cover;
-    object-position: center;
-    z-index: -1;
-    filter: brightness(0.7);
-    transition: all 0.5s ease-in-out;
-    animation: fadeOscillate 5s ease-in-out infinite;
- 
-   
-    &::after {
-        content: "";
-        position: absolute;
-        background: black;
-        height: 100%;
-        width: 100%;
-        border-radius: 20px;
-        top: 0;
-        left: 0;
-        z-index: 999;
-         
-      }
+    border-radius: 20px;
+    top: 0;
+    left: 0;
+    z-index: 999;
+
+  }
 }
+
 @keyframes fadeOscillate {
-    0% {
-        opacity: 0.0;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0.0;
-    }
+  0% {
+    opacity: 0.0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.0;
+  }
 }
