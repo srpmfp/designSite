@@ -1,3 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+.nunito-sans-nuniFont {
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100,
+    "YTLC" 500;
+}
+
 :root {
 
   --text-color-primary: #333333;
@@ -6,9 +18,6 @@
   --primary-color: #00FFFF;
   --primary-color-dark: #5b6f6f;
   --primary-color-darker: #374f4f;
-
-
-
 
   --secondary-color: #D8A7A7;
   --secondary-color-dark: #A07070;

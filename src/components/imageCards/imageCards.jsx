@@ -45,7 +45,7 @@ const ImageCards = ({ productImage }) => {
             {imageData.map((url, index) => (
                 <div key={index} className="imageCard" >
                     <Image
-                        loading="lazy"
+                        loading="eager"
                         src={url.url}
                         alt={`Image ${index + 1}`}
                         style={{ width: 'auto', maxWidth: '100%', height: '100%', zIndex: -10, objectFit: 'cover' }}

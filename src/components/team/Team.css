@@ -1,10 +1,81 @@
-
 .Headshot {
     width: auto;
-    height: 400px;
-    max-height: 500px;
-    border-radius: 100vw;
+    max-width: 500px;
+    height: auto;
+    max-height: 400px;
+    min-height: 300px;
+    border-radius: 20px;
+    cursor: pointer;
     transition: all 0.3s ease-in-out;
-    margin: 2vw;
+    margin: auto;
 }
-    
+
+.team-card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.bios {
+    margin-top: 1ch;
+    font-size: 1em;
+    color: var(--text-color-secondary);
+}
+
+.image-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+}
+
+.team-grid {
+    width: 100%;
+    display: grid;
+    overflow-y: auto;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 3rem;
+    margin-top: 3em;
+    justify-content: center;
+
+    &>div {
+        margin: auto;
+        text-align: center;
+    }
+
+    & a {
+        position: absolute;
+        top: 1ch;
+        opacity: .2;
+        margin: auto;
+        text-decoration: none;
+        border: 1px solid;
+        border-radius: 100vw;
+        font-size: .9em;
+        background-clip: border-box;
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+        color: linear-gradient(var(--text-color-primary), var(--text-color-secondary));
+        padding: 0.5ch 5ch;
+        background:
+            white
+            /* linear-gradient(transparent, transparent); */
+
+    }
+}
+
+.team-grid a:hover {
+    opacity: 1;
+    transition: all 0.3s ease-in-out;
+}
+
+.team-container {
+    padding: 4ch;
+    display: flex;
+    justify-content: center;
+    overflow-y: scroll;
+}

@@ -1,10 +1,9 @@
-
 .helperApi {
 
     display: flex;
     align-items: center;
     background: red;
-    position:fixed;
+    position: fixed;
     z-index: 9999;
     bottom: 0%;
     right: 0%;
@@ -15,26 +14,29 @@
     transform: translateY(50%);
     animation: loadAnim 0.5s forwards;
     animation-delay: 1s;
-    box-shadow: 1px 5px  25px 5px rgba(0,0,0,.6)   ;
-  
+    box-shadow: 1px 5px 25px 5px rgba(0, 0, 0, .6);
+
 }
 
 .bubble {
-    position:fixed;
-    display:none;
+    position: fixed;
+    display: none;
     z-index: 10000;
     bottom: 0%;
     right: 0%;
-    width:10vw;
-    height:5vw;   
     background: yellow;
+
+    & .active {
+        transition: all 1s ease-in-out;
+    }
 }
 
-.active{
-    display:flex;
+.active {
+    display: flex;
     flex-direction: column;
+    width: 20vw;
+    height: 300px;
     justify-content: space-between
-
 }
 
 .helperApi:hover {
@@ -42,23 +44,24 @@
     background: orange;
     cursor: pointer;
     animation: hoverAnim 0.3s forwards;
-    transition:all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 
 
 }
 
 .helperApi:not(:hover) {
- 
+
     animation: returnAnim 0.3s forwards;
 
-}   
+}
 
 
 @keyframes bounce {
-    
+
     40% {
         transform: translateY(-20px);
     }
+
     60% {
         transform: translateY(-10px);
     }
@@ -69,14 +72,17 @@
         animation-play-state: paused;
         transform: translateY(inherit) scale(1);
     }
+
     100% {
         transform: translateY(0%) scale(1.1);
     }
 }
+
 @keyframes returnAnim {
     0% {
         transform: translateY(0%) scale(1.1);
     }
+
     100% {
         transform: translateY(50%) scale(1);
     }
@@ -106,9 +112,10 @@
 .close-x::after {
     transform: translate(-50%, -50%) rotate(-45deg);
 }
+
 .helperInput {
     width: 80%;
-    height: 40%;
+    height: 20%;
     margin: 0 10%;
     border-radius: 10px;
     border: 2px solid #333;
