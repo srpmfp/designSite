@@ -12,6 +12,7 @@ function App() {
   const [headshotImage, setHeadshotImage] = useState([]);
   const [buildingVideos, setBuildingVideos] = useState([]);
   const [videoIndex, setVideoIndex] = useState(0);
+  const [videoCount, setVideoCount] = useState(0);
 
   const API_KEY = process.env.REACT_APP_PEXEL_API_KEY;
 
@@ -29,7 +30,6 @@ function App() {
           method: 'GET',
           headers: headers,
         }
-
         )
         const response2 = await fetch("https://api.pexels.com/v1/collections/goyqqdb", {
           method: 'GET',
@@ -75,9 +75,6 @@ function App() {
 
     if (storedProductImages) {
       try {
-
-
-
         const parsedProductImages = JSON.parse(storedProductImages);
         const parsedHeadshotImages = JSON.parse(storedHeadshotImages);
         const parsedBuildingVideos = JSON.parse(storedBuildingVideos);
@@ -104,20 +101,37 @@ function App() {
   // Video timing effect
   useEffect(() => {
     if (buildingVideos.length === 0) return;
+    if (videoIndex.length === buildingVideos.length) {
+      const style = {
+        visible: 'hidden',
 
-    const interval = setInterval(() => {
+      }
+      const videoElement = document.querySelector('.building-video');
+      videoElement.style.visibility = style.visible;
+      return;
+    }
+    else {
+      const interval = setInterval(() => {
+        setVideoIndex((prevIndex) => {
+          const nextIndex = prevIndex + 1;
+          // Stop at the last video
+          if (nextIndex >= buildingVideos.length) {
+            return prevIndex + 1; // Stay at current index
+          } else
+
+            console.log("Video Index:", nextIndex);
+          return nextIndex;
+        });
+      }, 3000);
+
+      return () => clearInterval(interval);
 
 
-      setVideoIndex((prevIndex) => (prevIndex + 1) % buildingVideos.length);
-
-    }, 5000);
-
-
-    return () => clearInterval(interval);
+    }
 
   }
 
-    , [buildingVideos]);
+    , [buildingVideos, videoIndex, videoCount]);
 
   const currentVideo = buildingVideos.length > 0 ? buildingVideos[videoIndex] : null;
   const textArray = [
@@ -134,6 +148,7 @@ function App() {
 
     {currentVideo && (<>
       <video
+        loading="eager"
         key={currentVideo.id}
         className="building-video"
         autoPlay
@@ -149,21 +164,10 @@ function App() {
         <div className='cardContainer-right'>
           <h1>{currentText}</h1>
         </div>
-      </section>  
+      </section>
     </>
     )}
 
-
-    <section className="screenSection">
-      <div className='cardContainer-right'>
-        <h1>Welcome to the Design Site</h1>
-      </div>
-    </section>
-    <section className="screenSection ">
-      <div className='cardContainer-right' >
-        <h1>Welcome to the Design Site</h1>
-      </div>
-    </section>
   </div>
   );
 }
