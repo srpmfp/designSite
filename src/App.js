@@ -1,5 +1,6 @@
 import React from "react"
 import './App.css';
+import DS from "./ds.jsx"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -161,13 +162,20 @@ function App() {
 
 
 
-        <div className='cardContainer-right'>
+        <div className='cardContainer-center'>
           <h1>{currentText}</h1>
+
         </div>
+
       </section>
+
     </>
     )}
-
+    <section className="design-container" >
+      <div >Design</div>
+      {DS()}
+      <div>Studio</div>
+    </section>
   </div>
   );
 }

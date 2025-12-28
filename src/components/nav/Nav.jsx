@@ -1,7 +1,9 @@
 import "./Nav.css";
+import DS from "../../ds.jsx"
 import { useEffect, useState } from "react";
 const Nav = () => {
 
+    const [location, setLocation] = useState('navLogo')
 
     const [cursorPosition, setCursorPosition] = useState({});
     useEffect(() => {
@@ -13,13 +15,21 @@ const Nav = () => {
                 x: event.clientX - rect.left,
                 y: event.clientY - rect.top
             });
+
         }
+        const handleMouseLeave = () => {
+            const navLinks = document.querySelector('.nav');
+            navLinks.style.background = 'none';
+        }
+        navLinks.addEventListener('mouseleave', handleMouseLeave);
 
         navLinks.addEventListener('mousemove', handleMouseMove);
-
+        console.log(cursorPosition)
         return () => {
-            if (cursorPosition.y > navLinks.offsetHeight)
+            if (cursorPosition.y >= navLinks.offsetHeight / 5)
                 navLinks.removeEventListener('mousemove', handleMouseMove);
+            navLinks.removeEventListener('mouseleave', handleMouseLeave);
+
         };
     }, []);
 
@@ -33,7 +43,7 @@ const Nav = () => {
                 link.style.transition = 'color 0.3s ease';
                 link.style.color = `hsl(white/ ${cursorPosition.x}*${.1}})`;
             });
-            navLinks.style.background = `radial-gradient(circle at ${cursorPosition.x}px ${cursorPosition.y}px, var(--primary-color-dark), transparent, transparent, transparent, transparent, transparent, transparent, transparent, transparent, transparent, transparent, transparent, transparent,transparent, transparent, transparent,transparent, transparent, transparent)`;
+            navLinks.style.background = `radial-gradient(circle at ${cursorPosition.x}px ${cursorPosition.y}px, var(--secondary-color-dark), transparent, transparent, transparent, transparent, transparent, transparent, transparent, transparent, transparent, transparent, transparent, transparent,transparent, transparent, transparent,transparent, transparent, transparent)`;
             navLinks.style.transition = 'color 0.3s ease';
             navLinks.style.color = `hsl(white/ ${cursorPosition.x}*${.1}})`;
 
@@ -45,39 +55,10 @@ const Nav = () => {
     return (
         <nav className="nav">
 
-
-            <svg xmlns='http://www.w3.org/2000/svg' className="navLogo" width='256' height='256' viewBox='0 0 256 256'>
-                <defs>
-                    <style>{`
-        .stroke {
-            stroke: #708090;
-            fill: none;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-    `}</style>
-                </defs>
-
-                <circle cx='128' cy='128' r='112' class='stroke' stroke-width='12' />
-
-                <g transform='rotate(-8 128 128)'>
-                    <path d='M88 70 L88 186' class='stroke' stroke-width='18' />
-
-                    <path d='M88 70
-             A58 58 0 0 1 150 128
-             A58 58 0 0 1 88 186'
-                        class='stroke' stroke-width='18' />
-
-                    <path d='M152 92
-             A40 40 0 0 0 104 126
-             A22 22 0 0 0 150 128'
-                        class='stroke' stroke-width='18' />
-
-                    <path d='M150 128
-             A58 58 0 0 1 88 186'
-                        class='stroke' stroke-width='18' />
-                </g>
-            </svg>
+            {/* logo import */}
+            <div className="navLogo">
+                {DS(location)}
+            </div>
 
 
             <ul className="navLinks nunito-sans-nuniFont">

@@ -4,21 +4,26 @@ import { InputGroup, Button } from 'react-bootstrap';
 
 const HelperApi = () => {
     const [showBubble, setShowBubble] = useState(false);
+    const [userQuestion, setUserQuestion] = useState('');
+    const [userInput, setUserInput] = useState('');
+
 
     return (
         <div>
             {showBubble && (
                 <div className="bubble active">
+
+                    <button
+                        onClick={() => setShowBubble(false)}
+                        className="close-btn"
+                        style={{ float: 'right', background: 'none', border: 'none', fontSize: '16px', cursor: 'pointer' }}
+                    >
+                        &times; {/* × symbol */}
+                    </button>
+
+                    {userQuestion && <p>{userQuestion}</p>}
                     <div>
                         How can we help?
-                        <button
-                            onClick={() => setShowBubble(false)}
-                            className="close-btn"
-                            style={{ float: 'right', background: 'none', border: 'none', fontSize: '16px', cursor: 'pointer' }}
-                        >
-                            &times; {/* × symbol */}
-                        </button>
-
                     </div>
                     <InputGroup className="helperInput">
                         <input
@@ -26,8 +31,11 @@ const HelperApi = () => {
                             className="form-control"
                             placeholder="Type your question here..."
                             aria-label="User question"
+                            onChange={(e) => setUserInput(e.target.value)}
+
+
                         />
-                        <Button variant="primary" id="button-addon2">
+                        <Button onClick={() => { setUserQuestion(userInput) }} variant="primary" id="button-addon2">
                             Send
                         </Button>
                     </InputGroup>

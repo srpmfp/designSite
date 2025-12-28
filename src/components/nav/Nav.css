@@ -4,6 +4,8 @@
 
     width: 100vw;
     height: 10ch;
+    top: 0;
+    left: 0;
     z-index: 10;
     position: fixed;
 
@@ -17,6 +19,30 @@
     top: .5em;
     width: 8ch;
     height: auto;
+
+    &:hover {
+        & svg {
+            animation: spin 5s linear infinite;
+            animation-play-state: running;
+
+        }
+    }
+
+
+}
+
+
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+        origin-transform: center;
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
 }
 
 .navLinks {
@@ -43,26 +69,26 @@
         text-decoration: none;
         color: var(--text-color-primary);
         font-size: var(--header-font-size);
-        padding: 1em;
+        background: rgba(255, 255, 255, 0.45);
+        padding: .2em;
+        border-radius: .2em;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
         &:hover {
-            color: var(--accent-color);
+            color: var(--primary-color-dark);
         }
     }
 
     [href="/login"] {
-        position: fixed;
-        right: 0;
-        ;
+
 
         font-size: var(--primary-font-size);
-        top: 5ch;
+        height: 100%;
         padding: .3em;
         border: 1px solid transparent;
-        border-radius: 100vw;
+
         letter-spacing: 0;
-        background: radial-gradient(circle at 50% 50%, var(--secondary-color-dark),
-                transparent);
+        ;
         transition: all 1s ease-in-out;
 
         &:hover {

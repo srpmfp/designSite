@@ -7,7 +7,7 @@ const Products = ({ productImage }) => {
 
     return (
         <div className="screenSection  ">
-            <div className="cardContainer-center">
+            <div className="cardContainer-products">
 
                 <ImageCards productImage={productImage} />
             </div>

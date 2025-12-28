@@ -15,7 +15,8 @@ body {
 }
 
 .App {
-  display: block;
+  display: flex;
+  justify-content: center;
   font-family: var(--body-font-family);
   color: var(--text-color-primary);
   background-size: fill;
@@ -44,8 +45,6 @@ body {
   Width: 100%;
   color: var(--text-color-primary);
   font-size: var(--primary-font-size);
-
-
 
 
 
@@ -150,6 +149,7 @@ div[class$="left"] {
 }
 
 
+
 div[class$="right"] {
 
   grid-column: right;
@@ -169,13 +169,31 @@ div[class$="right"] {
   }
 }
 
+div[class$="center"] {
+
+  grid-column: leftMid/ span rightMid;
+  grid-row: rightMid;
+  transform: translateX(1%);
+  animation: slideIn 3s linear alternate;
+  margin: auto;
+  /* animation-timeline: var(--timeline-default); 
+  animation-range: entry 0% cover 50%;  */
+  /* animation: fadeOscillate 3s ease-in-out infinite; */
+
+  & h1 {
+    text-align: center;
+    color: white;
+
+
+  }
+}
+
 .building-video {
   position: absolute;
-  top: 0%;
+  top: 10%;
   right: 0;
-  height: 100%;
+  height: 90%;
   width: 100%;
-  max-width: 50vw;
   object-fit: cover;
   object-position: center;
   z-index: -1;
@@ -242,5 +260,67 @@ div[class$="right"] {
 
   100% {
     opacity: 0.0;
+  }
+}
+
+.design-logo {
+  font-size: 2em;
+  font-weight: bold;
+  color: var(--text-color-primary);
+  position: fixed;
+  top: 1em;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 11;
+}
+
+.design-container {
+  display: flex;
+  width: 0;
+  height: 0;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  animation: logoFade 5s forwards cubic-bezier(0.165, 0.84, 0.44, 1);
+  animation-delay: 12s;
+  animation-iteration-count: 1;
+
+
+}
+
+.design-container svg {
+  animation: rotation 5s;
+  animation-delay: 12s;
+}
+
+@keyframes logoFade {
+  0% {
+
+    transform: translateY(-150%);
+    visibility: hidden;
+    width: 100%;
+    height: auto;
+    opacity: 0;
+
+  }
+
+  100% {
+    transform: translateY(0%);
+    visibility: visible;
+    width: 100%;
+    height: auto;
+    opacity: 1;
+  }
+
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
   }
 }

@@ -55,11 +55,7 @@ const ImageCards = ({ productImage }) => {
 
                     <div className="photographer"> <a target="_blank" rel="noopener noreferrer" href={url.photographerSite}>Photographer: {url.name}</a></div>
                     {fakeDescriptions[index] ? <div className="descriptions">{fakeDescriptions[index]}</div> : null}
-                    <div className="pexels-logo">
-                        <a className="pexels-link" href="https://www.pexels.com">
-                            <img alt="Pexels logo" src="https://images.pexels.com/lib/api/pexels-white.png" />
-                        </a>
-                    </div>
+
                 </div>
             ))}
 

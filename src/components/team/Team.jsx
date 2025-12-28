@@ -73,7 +73,7 @@ const Team = ({ headshotImage }) => {
 
 
     return (
-        <>  {showModal ? <TeamModal index={profileIndex} name={fakeDescriptions[profileIndex]?.Name} bio={fakeDescriptions[profileIndex]?.bio} show={showModal} onHide={() => setShowModal(false)} /> : null}
+        <>  {showModal ? <TeamModal index={profileIndex} url={imageData[profileIndex]} name={fakeDescriptions[profileIndex]?.Name} bio={fakeDescriptions[profileIndex]?.bio} show={showModal} onHide={() => setShowModal(false)} /> : null}
             <div className="team-container">
 
                 <div className="team-grid">
@@ -94,7 +94,7 @@ const Team = ({ headshotImage }) => {
 
                                     />
                                 </div>
-                                <a target="_blank" rel="noopener noreferrer" href={url.photographerSite}>Photographer: {url.name}</a></div>
+                            </div>
                             <div className="team-info">
 
 
