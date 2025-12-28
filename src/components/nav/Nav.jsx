@@ -63,8 +63,8 @@ const Nav = () => {
 
             <ul className="navLinks nunito-sans-nuniFont">
                 <li><a href="/">Home</a></li>
-                <li><a href="/products">Mission</a></li>
-                <li><a href="/team">Meet The Team</a></li>
+                <li><a href="/products">Products</a></li>
+                <li><a href="/team">The Team</a></li>
                 <li><a href="/login">Login</a></li>
             </ul>
         </nav>
