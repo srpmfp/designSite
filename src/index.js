@@ -9,6 +9,7 @@ import { BrowserRouter, Route, Routes } from "react-router"
 import Team from './components/team/Team';
 import Login from './components/login/Login';
 import HelperApi from './components/helperApi/helperApi';
+import BottomInfo from './components/bottomInfo/bottomInfo';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -27,6 +28,7 @@ root.render(
         </Routes>
       </>
     </BrowserRouter>
+    <BottomInfo />
   </React.StrictMode>
 );
 

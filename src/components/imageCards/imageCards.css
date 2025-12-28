@@ -47,6 +47,16 @@
 
     }
 
+    & img {
+        border-radius: 20px;
+        height: 100%;
+        max-width: 300px;
+        object-fit: cover;
+        object-position: center;
+        transition: all 0.5s ease-in-out;
+
+    }
+
 }
 
 
@@ -67,12 +77,12 @@
 }
 
 .imageCard:hover {
-    filter: blur(10px) grayscale(80%);
+
 
     .descriptions {
+        position: absolute;
         opacity: 1;
         z-index: 1000;
-        filter: blur(0px);
         transition: all 0.5s ease-in-out;
         transition-delay: 0.3s;
     }
