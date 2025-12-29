@@ -70,7 +70,18 @@ const Team = ({ headshotImage }) => {
 
     }, [headshotImage]);
 
-
+    useEffect(() => {
+        if (parsedHeadshots.length > 0) {
+            // Preload first 2-3 images
+            parsedHeadshots.slice(0, 3).forEach(img => {
+                const link = document.createElement('link');
+                link.rel = 'preload';
+                link.as = 'image';
+                link.href = img.url;
+                document.head.appendChild(link);
+            });
+        }
+    }, [headshotImage]);
 
     return (
         <>  {showModal ? <TeamModal index={profileIndex} url={imageData[profileIndex]} name={fakeDescriptions[profileIndex]?.Name} bio={fakeDescriptions[profileIndex]?.bio} show={showModal} onHide={() => setShowModal(false)} /> : null}
@@ -82,7 +93,8 @@ const Team = ({ headshotImage }) => {
                             <div key={index} className="team-card">
                                 <div   >
                                     <Image
-                                        loading="lazy"
+                                        loading={index < 2 ? "eager" : "lazy"}
+                                        fetchpriority={index < 2 ? "high" : "auto"} 
                                         className="Headshot"
                                         onClick={() => {
                                             setShowModal(true)

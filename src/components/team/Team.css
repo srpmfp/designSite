@@ -1,10 +1,9 @@
 .Headshot {
-    width: auto;
-    max-width: 500px;
-    height: auto;
-    max-height: 400px;
-    min-height: 300px;
+    width: 500px;
+    height: 400px;
+    max-width: 100%;
     border-radius: 20px;
+    object-fit: cover;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     margin: auto;
@@ -30,11 +29,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    min-height: 300px;
 
     & img {
-        max-Height: 300px;
-        max-width: 250px;
+        height: 300px;
+        width: 250px;
         object-fit: cover;
         object-position: 60%;
     }
@@ -48,8 +47,10 @@
     overflow-y: auto;
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     gap: 3rem;
+    grid-auto-rows: 450px;
     margin-top: 3em;
     justify-content: center;
+    min-height: 100vh;
 
     &>div {
         margin: auto;
@@ -82,7 +83,7 @@
 }
 
 .team-container {
-    padding: 4ch;
+    padding: 10ch;
     display: flex;
     justify-content: center;
     overflow-y: scroll;
