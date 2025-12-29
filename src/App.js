@@ -98,7 +98,30 @@ function App() {
 
 
   }, []);
+  useEffect(() => {
+    if (buildingVideos.length > 0 && buildingVideos[0]?.video_files?.[0]?.link) {
+      // Preload the first video
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'video';
+      link.href = buildingVideos[0].video_files[0].link;
+      document.head.appendChild(link);
 
+      // Optional: Preload next video too
+      if (buildingVideos[1]?.video_files?.[0]?.link) {
+        const link2 = document.createElement('link');
+        link2.rel = 'preload';
+        link2.as = 'video';
+        link2.href = buildingVideos[1].video_files[0].link;
+        document.head.appendChild(link2);
+      }
+
+      return () => {
+        document.head.removeChild(link);
+        if (buildingVideos[1]) document.head.querySelectorAll('link[as="video"]').forEach(l => l.remove());
+      };
+    }
+  }, [buildingVideos]);
   // Video timing effect
   useEffect(() => {
     if (buildingVideos.length === 0) return;
