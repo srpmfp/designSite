@@ -9,12 +9,13 @@
     object-position: center;
     object-fit: cover;
     z-index: -1;
-    padding: var(--nav-padding-large);
-    top: var(--nav-padding-large);
-    height: 100%;
+    padding-top: var(--nav-padding-large);
+
+    height: 900px;
     width: 100%;
     animation: float 20s ease-in-out infinite;
     overflow-x: scroll;
+    overflow-y: hidden;
     z-index: 1;
     transition-delay: 5s;
     transition: all 0.5s ease-in-out;
@@ -52,7 +53,8 @@
     object-position: center;
     object-fit: cover;
     z-index: -1;
-    height: 800px;
+    height: 700px;
+    max-height: 100%;
     width: 100%;
     min-height: 400px;
     transition: all 0.5s ease-in-out;

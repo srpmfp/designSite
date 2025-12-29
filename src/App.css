@@ -206,6 +206,8 @@ div[class$="center"] {
   background-origin: padding-box;
 
 
+  -webkit-playsinline: true;
+
 
   &::after {
     content: "";
