@@ -177,6 +177,7 @@ function App() {
         className="building-video"
         autoPlay
         muted
+        playsInline
         loop
       >
         <source src={currentVideo.video_files[0].link} type="video/mp4" />
